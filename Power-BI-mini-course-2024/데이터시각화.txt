@@ -1,0 +1,49 @@
+> 구종 수 측정값 - 1차 시도
+구종 수 = DISTINCTCOUNT(pitcher_mlb_korean[pitch_name])
+
+> 구종 수 측정값 - 2차 시도
+구종 수 = CALCULATE(DISTINCTCOUNT(pitcher_mlb_korean[pitch_name]),
+                    pitcher_mlb_korean[pitch_name] IN {"", "Intentional Ball", "Pitch Out"})
+
+> 구종 수 측정값 - 3차 시도
+구종 수 = CALCULATE(DISTINCTCOUNT(pitcher_mlb_korean[pitch_name]),
+                    NOT pitcher_mlb_korean[pitch_name] IN {"", "Intentional Ball", "Pitch Out"})
+
+
+> 구종 수 측정값 - 4차 시도
+구종 수 = CALCULATE(DISTINCTCOUNT(pitcher_mlb_korean[pitch_name]),
+                    KEEPFILTERS(NOT pitcher_mlb_korean[pitch_name] IN {"", "Intentional Ball", "Pitch Out"}))
+
+> CSW% 측정값 - 1차 시도
+CSW% = DIVIDE(
+    CALCULATE(COUNTROWS(pitcher_mlb_korean), pitcher_mlb_korean[description] IN {"swinging_strike", "missed_bunt", "swinging_strike_blocked", "called_strike"}), 
+    COUNTROWS(pitcher_mlb_korean)
+)
+
+> CSW% 측정값 - 2차 시도
+CSW% = DIVIDE(
+    CALCULATE(COUNTROWS(pitcher_mlb_korean), pitcher_mlb_korean[description] IN {"swinging_strike", "missed_bunt", "swinging_strike_blocked", "called_strike"}), 
+    CALCULATE(COUNTROWS(pitcher_mlb_korean), REMOVEFILTERS(pitcher_mlb_korean[description]))
+)
+
+> CSW% 측정값 - 3차 시도
+CSW% = CALCULATE(COUNTROWS(pitcher_mlb_korean), REMOVEFILTERS(pitcher_mlb_korean[description]))
+
+> CSW% 측정값 - 4차 시도
+CSW% = COUNTROWS(pitcher_mlb_korean)
+
+> CSW% 측정값 - 5차 시도
+CSW% = 
+VAR called_strike_plus_whiffs = CALCULATE(COUNTROWS(pitcher_mlb_korean), pitcher_mlb_korean[description] IN {"swinging_strike", "missed_bunt", "swinging_strike_blocked", "called_strike"})
+VAR total_pitches = CALCULATE(COUNTROWS(pitcher_mlb_korean), REMOVEFILTERS(pitcher_mlb_korean[description]))
+
+RETURN
+    DIVIDE(called_strike_plus_whiffs, total_pitches)
+
+> K% 측정값
+K% = 
+VAR strikeouts = CALCULATE(COUNTROWS(pitcher_mlb_korean), pitcher_mlb_korean[events] IN {"strikeout", "strikeout_double_play"})
+VAR TBF = CALCULATE(COUNTROWS(pitcher_mlb_korean), pitcher_mlb_korean[events] <> "")
+
+RETURN
+    DIVIDE(strikeouts, TBF)
