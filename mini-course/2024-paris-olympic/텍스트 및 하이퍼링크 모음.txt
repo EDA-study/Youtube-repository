@@ -1,0 +1,18 @@
+> 텍스트
+- 레슬링, 복싱, 유도, 태권도는 준결승 전에서 패배한 2명에게 모두 동메달 수여
+
+- 수영: 남자 수영 100m 평영 동점으로 인해 은메달 2명, 동메달 없음
+
+- 육상: 여자 높이뛰기에서 동점으로 인해 동메달 2명
+
+- 체조: 남자 철봉에서 동점으로 인해 동메달 2명 
+
+- 카누: 카약 여자 2인승 500m에서 동점으로 인해동메달 2명  
+
+- 메달 비율은 종목별 메달 비율을 뜻함
+
+> 하이퍼링크
+남자 수영 100m 평영 동점: https://en.wikipedia.org/wiki/List_of_2024_Summer_Olympics_medal_winners#Men's_events_9
+여자 높이뛰기에서 동점: https://en.wikipedia.org/wiki/List_of_2024_Summer_Olympics_medal_winners#Women's_events
+남자 철봉에서 동점: https://en.wikipedia.org/wiki/List_of_2024_Summer_Olympics_medal_winners#Men
+카약 여자 2인승 500m에서 동점: https://en.wikipedia.org/wiki/List_of_2024_Summer_Olympics_medal_winners#Sprint
